@@ -24,7 +24,10 @@ default: &default
 development:
   <<: *default
   database: BlogAPI_development
-
+  username: <%= ENV['psql_uid'] %>
+  password: <%= ENV['psql_pwd'] %>
+  host: localhost
+  port: 5432
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
@@ -58,6 +61,10 @@ development:
 test:
   <<: *default
   database: BlogAPI_test
+  username: <%= ENV['psql_uid'] %>
+  password: <%= ENV['psql_pwd'] %>
+  host: localhost
+  port: 5432
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -82,5 +89,7 @@ test:
 production:
   <<: *default
   database: BlogAPI_production
-  username: BlogAPI
-  password: <%= ENV['BLOGAPI_DATABASE_PASSWORD'] %>
+  username: <%= ENV['psql_uid'] %>
+  password: <%= ENV['psql_pwd'] %>
+  host: localhost
+  port: 5432
